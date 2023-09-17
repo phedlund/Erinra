@@ -1,6 +1,6 @@
 //
-//  KomIha_gApp.swift
-//  KomIhåg
+//  ErinraApp.swift
+//  Erinra
 //
 //  Created by Peter Hedlund on 8/31/23.
 //
@@ -9,10 +9,10 @@ import SwiftUI
 import SwiftData
 
 @main
-struct KomIha_gApp: App {
+struct ErinraApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Reminder.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -24,9 +24,13 @@ struct KomIha_gApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra {
             ContentView()
+                .modelContainer(sharedModelContainer)
+        } label: {
+            Label("Erinra", systemImage: "checklist.unchecked")
         }
-        .modelContainer(sharedModelContainer)
+        .menuBarExtraStyle(.window)
     }
+
 }
