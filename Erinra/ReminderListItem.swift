@@ -13,6 +13,7 @@ struct ReminderListItem: View {
     @Environment(ReminderState.self) private var reminderState
 
     @State var reminder: Reminder
+    @State private var isDone = false
     @Binding var isShowingAdd: Bool
 
     private let dateFormatter: DateFormatter = {
@@ -25,16 +26,20 @@ struct ReminderListItem: View {
     var body: some View {
         HStack(alignment: .top) {
             Button {
-                do {
-                    modelContext.delete(reminder)
-                    try modelContext.save()
-                } catch {
-                    print(error)
+                withAnimation {
+                    do {
+                        modelContext.delete(reminder)
+                        try modelContext.save()
+                        isDone.toggle()
+                    } catch {
+                        print(error)
+                    }
                 }
             } label: {
-                Image(systemName: "circle")
+                Image(systemName: isDone ? "circle.inset.filled": "circle")
             }
             .buttonStyle(.borderless)
+            .contentTransition(.symbolEffect(.replace))
             LabeledContent {
                 Text("")
             } label: {
