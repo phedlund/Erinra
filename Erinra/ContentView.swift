@@ -15,14 +15,36 @@ struct ContentView: View {
     
     @State private var isShowingAdd = false
     @State private var reminderState = ReminderState()
+    @State private var launchAtLogin = LaunchAtLogin()
 
     var body: some View {
         VStack {
             HStack {
-                Button {
-                    NSApplication.shared.orderFrontStandardAboutPanel()
+                Menu {
+                    Button {
+                        NSApplication.shared.orderFrontStandardAboutPanel()
+                    } label: {
+                        Text("About...")
+                    }
+                    Divider()
+                    Toggle(isOn: $launchAtLogin.isEnabled) {
+                        Text("Launch At Login")
+                    }
+//                    Button {
+//                        //
+//                    } label: {
+//                        Text("Settings...")
+//                    }
+//                    .keyboardShortcut(KeyEquivalent(","), modifiers: .command)
+                    Divider()
+                    Button {
+                        NSApplication.shared.terminate(self)
+                    } label: {
+                        Text("Quit")
+                    }
+                    .keyboardShortcut(KeyEquivalent("q"), modifiers: .command)
                 } label: {
-                    Image(systemName: "info.circle")
+                    Image(systemName: "ellipsis.circle")
                 }
                 Spacer()
                 Text("Erinra")

@@ -15,6 +15,7 @@
 		D04B1FC22AA172FE00B72475 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B1FC12AA172FE00B72475 /* Reminder.swift */; };
 		D04B1FC42AA172FF00B72475 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D04B1FC32AA172FF00B72475 /* Assets.xcassets */; };
 		D04B1FC72AA172FF00B72475 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D04B1FC62AA172FF00B72475 /* Preview Assets.xcassets */; };
+		D0680A602AB7791000387A79 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0680A5F2AB7791000387A79 /* LaunchAtLogin.swift */; };
 		D0BD590F2AA50BC40071B58F /* NewReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD590E2AA50BC40071B58F /* NewReminder.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		D04B1FC32AA172FF00B72475 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D04B1FC62AA172FF00B72475 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D04B1FC82AA172FF00B72475 /* Erinra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Erinra.entitlements; sourceTree = "<group>"; };
+		D0680A5F2AB7791000387A79 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		D0BD590E2AA50BC40071B58F /* NewReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminder.swift; sourceTree = "<group>"; };
 		D0F5DF3C2AA17A40003C7122 /* Erinra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Erinra-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 				D04B1FC12AA172FE00B72475 /* Reminder.swift */,
 				BDE807912AA90B2C0055C6B6 /* NotificationManager.swift */,
 				BDE807932AAFF4960055C6B6 /* ReminderState.swift */,
+				D0680A5F2AB7791000387A79 /* LaunchAtLogin.swift */,
 				D04B1FC32AA172FF00B72475 /* Assets.xcassets */,
 				D04B1FC82AA172FF00B72475 /* Erinra.entitlements */,
 				D04B1FC52AA172FF00B72475 /* Preview Content */,
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0680A602AB7791000387A79 /* LaunchAtLogin.swift in Sources */,
 				BDE807922AA90B2C0055C6B6 /* NotificationManager.swift in Sources */,
 				BDE807942AAFF4960055C6B6 /* ReminderState.swift in Sources */,
 				D046E0522AA6D4E500702773 /* ReminderListItem.swift in Sources */,
