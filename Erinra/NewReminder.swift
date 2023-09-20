@@ -40,7 +40,6 @@ struct NewReminder: View {
                     Spacer()
                     Button {
                         isShowingAdd = false
-//                        dismiss()
                     } label: {
                         Text("Cancel")
                     }
@@ -71,11 +70,11 @@ struct NewReminder: View {
                             print(error)
                         }
                         isShowingAdd = false
-//                        dismiss()
                     } label: {
                         Text("Add")
                     }
                     .keyboardShortcut(.defaultAction)
+                    .disabled(title.isEmpty)
                 }
                 Spacer()
             }
