@@ -27,16 +27,17 @@ struct ReminderListItem: View {
         HStack(alignment: .top) {
             Button {
                 withAnimation {
+                    isDone.toggle()
+                } completion: {
                     do {
                         modelContext.delete(reminder)
                         try modelContext.save()
-                        isDone.toggle()
                     } catch {
                         print(error)
                     }
                 }
             } label: {
-                Image(systemName: isDone ? "circle.inset.filled": "circle")
+                Image(systemName: isDone ? "checkmark.circle" : "circle")
             }
             .buttonStyle(.borderless)
             .contentTransition(.symbolEffect(.replace))
