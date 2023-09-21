@@ -10,7 +10,6 @@ import UserNotifications
 
 struct NewReminder: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) var dismiss
 
     @FocusState private var titleInFocus: Bool
     
@@ -90,7 +89,6 @@ struct NewReminder: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
               self.titleInFocus = true
             }
-
         }
     }
 }
