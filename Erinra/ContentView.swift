@@ -10,12 +10,17 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    
+    @AppStorage("TappingOutside") var isTappingOutside: Bool = false
 
     @Query private var reminders: [Reminder]
     
     @State private var isShowingAdd = false
+
     @State private var reminderState = ReminderState()
     @State private var launchAtLogin = LaunchAtLogin()
+    
+    @Namespace var bottomID
 
     var body: some View {
         VStack {
@@ -60,21 +65,49 @@ struct ContentView: View {
             .focusable(false)
             .buttonStyle(.borderless)
             .padding(EdgeInsets(top: 12, leading: 12, bottom: 4, trailing: 12))
-            List(reminders, id: \.persistentModelID) { reminder in
-                ReminderListItem(reminder: reminder, isShowingAdd: $isShowingAdd)
-                    .environment(reminderState)
-                    .padding(.vertical, 4)
-            }
-            .background(Color(nsColor: .controlBackgroundColor))
-            if isShowingAdd {
-                NewReminder(reminder: reminderState.currentReminder, isShowingAdd: $isShowingAdd)
-                    .modelContext(modelContext)
+            GeometryReader { geometry in
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack {
+                            ForEach(reminders, id: \.persistentModelID) { reminder in
+                                ReminderListItem(reminder: reminder, isShowingAdd: $isShowingAdd)
+                                    .environment(reminderState)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 18)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        print("I tapped inside")
+                                    }
+                                Divider()
+                                    .padding(.horizontal)
+                            }
+                            Group {
+                                if isShowingAdd {
+                                    NewReminder(reminder: reminderState.currentReminder, isShowingAdd: $isShowingAdd)
+                                        .modelContext(modelContext)
+                                        .background(Color(nsColor: .controlBackgroundColor))
+                                        .contentShape(Rectangle())
+                                } else {
+                                    EmptyView()
+                                }
+                            }
+                            .id(bottomID)
+                        }
+                        .frame(minWidth: geometry.size.width, minHeight: geometry.size.height, alignment: .top)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            print("I tapped")
+                            isTappingOutside.toggle()
+                        }
+                    }
                     .background(Color(nsColor: .controlBackgroundColor))
-                    .frame(width: 400, height: 120, alignment: .leading)
-            } else {
-                EmptyView()
+                    .onChange(of: isShowingAdd) { _, newValue in
+                        if newValue {
+                            proxy.scrollTo(bottomID, anchor: .bottom)
+                        }
+                    }
+                }
             }
-            Spacer()
         }
         .padding(0)
         .frame(width: 400, height: 400, alignment: .center)

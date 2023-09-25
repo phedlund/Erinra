@@ -37,7 +37,7 @@ struct ReminderListItem: View {
                     }
                 }
             } label: {
-                Image(systemName: isDone ? "checkmark.circle" : "circle")
+                Image(systemName: isDone ? "circle.inset.filled" : "circle")
             }
             .buttonStyle(.borderless)
             .contentTransition(.symbolEffect(.replace))

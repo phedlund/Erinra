@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Reminder: Codable {
+final class Reminder: Codable, Identifiable {
     enum CodingKeys: CodingKey {
         case uuid
         case note
