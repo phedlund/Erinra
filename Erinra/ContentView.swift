@@ -83,7 +83,7 @@ struct ContentView: View {
                             }
                             Group {
                                 if isShowingAdd {
-                                    NewReminder(reminder: reminderState.currentReminder, isShowingAdd: $isShowingAdd)
+                                    NewReminder(reminder: reminderState.currentReminder, isShowingAdd: $isShowingAdd, isEditing: false)
                                         .modelContext(modelContext)
                                         .background(Color(nsColor: .controlBackgroundColor))
                                         .contentShape(Rectangle())

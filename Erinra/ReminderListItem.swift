@@ -15,6 +15,7 @@ struct ReminderListItem: View {
     @State var reminder: Reminder
     @State private var isDone = false
     @Binding var isShowingAdd: Bool
+    @State private var isShowingEdit = false
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -55,11 +56,16 @@ struct ReminderListItem: View {
             Spacer()
             Button {
                 reminderState.currentReminder = reminder
-                isShowingAdd = true
+                isShowingEdit = true
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
             .buttonStyle(.borderless)
+            .popover(isPresented: $isShowingEdit, arrowEdge: .trailing) {
+                NewReminder(reminder: reminder, isShowingAdd: $isShowingAdd, isEditing: true)
+                    .modelContext(modelContext)
+                    .padding()
+            }
         }
     }
 }

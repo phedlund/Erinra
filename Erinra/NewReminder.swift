@@ -28,15 +28,20 @@ struct NewReminder: View {
     
     var reminder: Reminder?
     @Binding var isShowingAdd: Bool
+    var isEditing: Bool
 
     var body: some View {
         HStack(alignment: .top) {
-            Button {
-                //
-            } label: {
-                Image(systemName: "circle")
+            if isEditing {
+                EmptyView()
+            } else {
+                Button {
+                    //
+                } label: {
+                    Image(systemName: "circle")
+                }
+                .buttonStyle(.borderless)
             }
-            .buttonStyle(.borderless)
             Form {
                 TextField(text: $title, prompt: Text("")) { }
                     .font(.body)
@@ -127,5 +132,5 @@ struct NewReminder: View {
 }
 
 #Preview {
-    NewReminder(isShowingAdd: Binding(projectedValue: .constant(true)))
+    NewReminder(isShowingAdd: Binding(projectedValue: .constant(true)), isEditing: false)
 }
