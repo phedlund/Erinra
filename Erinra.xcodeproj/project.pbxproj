@@ -308,7 +308,7 @@
 				INFOPLIST_FILE = "Erinra-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Peter B Hedlund";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023-2024 Peter B Hedlund";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -339,7 +339,7 @@
 				INFOPLIST_FILE = "Erinra-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Peter B Hedlund";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023-2024 Peter B Hedlund";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
