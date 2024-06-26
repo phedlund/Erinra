@@ -45,9 +45,9 @@ struct ReminderListItem: View {
             LabeledContent {
                 Text("")
             } label: {
-                Text(reminder.title)
+                linkText(text: reminder.title)
                 if reminder.note.count > 0 {
-                    Text(reminder.note)
+                    linkText(text: reminder.note)
                 }
                 if reminder.reminder {
                     Text(dateFormatter.string(from: reminder.reminderDate))
@@ -67,6 +67,16 @@ struct ReminderListItem: View {
                     .padding()
             }
         }
+    }
+    
+    func linkText(text: String) -> some View {
+        var attrString: AttributedString
+        if let attrStr = try? AttributedString(markdown: text) {
+            attrString = attrStr
+        } else {
+            attrString = AttributedString(text)
+        }
+        return Text(attrString)
     }
 }
 
