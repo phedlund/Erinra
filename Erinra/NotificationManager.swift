@@ -8,7 +8,7 @@
 import UserNotifications
 
 class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
-    static let shared = NotificationManager()
+    @MainActor static let shared = NotificationManager()
     static let notificationId = "dev.pbh.Erinra.notification"
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response:
