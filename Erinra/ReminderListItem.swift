@@ -81,5 +81,10 @@ struct ReminderListItem: View {
 }
 
 #Preview {
-    ReminderListItem(reminder: Reminder(note: "Some more information", reminder: false, reminderDate: Date(), title: "My Preview Reminder"), isShowingAdd: Binding(projectedValue: .constant(true)))
+    ReminderListItem(reminder: Reminder(note: "Some more information",
+                                        reminder: false,
+                                        reminderDate: Date(),
+                                        title: "My Preview Reminder"),
+                     isShowingAdd: Binding(projectedValue: .constant(true)))
+    .environment(ReminderState())
 }
